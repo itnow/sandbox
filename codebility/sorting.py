@@ -11,9 +11,9 @@ def selection_sort(A):
     in the right order (this type of a property is called the loop invariant).
     """
     n = len(A)
-    for k in xrange(n):
+    for k in range(n):
         minimal = k
-        for j in xrange((k + 1), n):
+        for j in range((k + 1), n):
             if A[j] < A[minimal]:
                 minimal = j
         if k != minimal:
@@ -36,11 +36,11 @@ def counting_sort(A, k):
     n = len(A)
     count = [0] * (k + 1)
 
-    for i in xrange(n):
+    for i in range(n):
         count[A[i]] += 1
     idx = 0
-    for el in xrange(k + 1):
-        for _ in xrange(count[el]):
+    for el in range(k + 1):
+        for _ in range(count[el]):
             A[idx] = el
             idx += 1
     return A

@@ -18,10 +18,10 @@ def slow_leader(A):
     """
     n = len(A)
     leader = -1
-    for k in xrange(n):
+    for k in range(n):
         candidate = A[k]
         count = 0
-        for i in xrange(n):
+        for i in range(n):
             if A[i] == candidate:
                 count += 1
         if count > n // 2:
@@ -45,7 +45,7 @@ def fast_leader(A):
     A.sort()
     candidate = A[n // 2]
     count = 0
-    for i in xrange(n):
+    for i in range(n):
         if A[i] == candidate:
             count += 1
     if count > n // 2:
@@ -74,7 +74,7 @@ def golden_leader(A):
 
     After removing all pairs of dierent elements, we end up with a sequence
     containing all the same values. This value is not necessarily the leader;
-    it is only a candidate for the leader. 
+    it is only a candidate for the leader.
 
     Finally, we should iterate through all the elements and count the occurrences
     of the candidate; if it is greater than n/2 then we have found the leader;
@@ -83,7 +83,7 @@ def golden_leader(A):
     n = len(A)
     size = 0
 
-    for k in xrange(n):
+    for k in range(n):
         if size == 0:
             size += 1
             value = A[k]
@@ -99,7 +99,7 @@ def golden_leader(A):
 
     leader = -1
     count = 0
-    for k in xrange(n):
+    for k in range(n):
         if A[k] == candidate:
             count += 1
     if count > n // 2:

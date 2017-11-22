@@ -9,7 +9,7 @@ Return the value of the missing element.
 
 
 def solution(A):
-    print '<<<', A
+    print('<<<', A)
 
     # full length of array
     n = len(A) + 1
@@ -22,4 +22,4 @@ def solution(A):
     return control_sum - input_sum
 
 
-print solution([2, 3, 1, 5])
+print(solution([2, 3, 1, 5]))

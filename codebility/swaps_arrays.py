@@ -22,8 +22,8 @@ def slow_solution(A, B, m):
     n = len(A)
     sum_a = sum(A)
     sum_b = sum(B)
-    for i in xrange(n):
-        for j in xrange(n):
+    for i in range(n):
+        for j in range(n):
             # Test swap
             change = B[j] - A[i]
             sum_a += change
@@ -40,7 +40,7 @@ def counting(A, m):
     """Make an array of counters"""
     n = len(A)
     count = [0] * m
-    for k in xrange(n):
+    for k in range(n):
         count[A[k]] += 1
     return count
 
@@ -69,7 +69,7 @@ def fast_solution(A, B, m):
 
     count = counting(A, m)
 
-    for i in xrange(n):
+    for i in range(n):
         if B[i] - d >= 0 and B[i] - d <= m and count[B[i] - d] > 0:
             return True
 
@@ -88,12 +88,12 @@ f1 = ([1, 3, 3, 1],
 f2 = ([1, 7, 3, 4],
       [1, 3, 4, 2], 10)
 
-print '=== Slow:'
+print('=== Slow:')
 slow_solution(*t1)
 slow_solution(*t2)
 slow_solution(*f1)
 slow_solution(*f2)
-print '=== Fast:'
+print('=== Fast:')
 fast_solution(*t1)
 fast_solution(*t2)  # TODO: false positive
 fast_solution(*f1)

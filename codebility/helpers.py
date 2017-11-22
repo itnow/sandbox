@@ -6,9 +6,9 @@ def print_out(f):
     @wraps(f)
     def wrapper(*args, **kwargs):
         hr = '-' * 40
-        print hr
-        print '<<<', args, kwargs
-        print '>>>'
-        print f(*args, **kwargs)
-        print hr
+        print(hr)
+        print('<<<', args, kwargs)
+        print('>>>')
+        print(f(*args, **kwargs))
+        print(hr)
     return wrapper

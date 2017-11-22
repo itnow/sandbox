@@ -16,4 +16,4 @@ def solution(X, Y, D):
     return jumps
 
 
-print solution(10, 85, 30)
+print(solution(10, 85, 30))

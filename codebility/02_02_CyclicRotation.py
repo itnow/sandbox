@@ -9,11 +9,11 @@ Return the array A rotated K times.
 
 
 def solution(a, k):
-    print '<<<', a, k
+    print('<<<', a, k)
     if k > 0:
         a = a[-1:] + a[:-1]
         return solution(a, k - 1)
     return a
 
 
-print solution([1, 2, 3, 4, 5], 2)
+print(solution([1, 2, 3, 4, 5], 2))

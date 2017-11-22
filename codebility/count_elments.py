@@ -12,7 +12,7 @@ def counting(A, m):
     n = len(A)
     count = [0] * m
 
-    for k in xrange(n):
+    for k in range(n):
         count[A[k]] += 1
 
     return count

@@ -6,7 +6,7 @@ from helpers import print_out
 @print_out
 def solution(N):
     br = str(bin(N))[2:]
-    print 'binary repr:', br
+    print('binary repr:', br)
     br = br.strip('0')
     seqs = br.split('1')
     return max((len(x) for x in seqs))

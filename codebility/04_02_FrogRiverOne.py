@@ -42,7 +42,7 @@ def solution(X, A):
     fall_time = len(A)
     leaves_pos = set()
 
-    for t in xrange(fall_time):
+    for t in range(fall_time):
         leaves_pos.add(A[t])
         if len(leaves_pos) == X:
             return t

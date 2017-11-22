@@ -6,7 +6,7 @@ from helpers import print_out
 @print_out
 def reverse(arr):
     n = len(arr)
-    for i in xrange(n // 2):
+    for i in range(n // 2):
         k = n - i - 1
         arr[i], arr[k] = arr[k], arr[i]
     return arr

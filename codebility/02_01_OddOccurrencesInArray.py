@@ -19,7 +19,7 @@ def solution(A):
     for el in A:
         d[el] = d.setdefault(el, 0) + 1
 
-    print 'Elements counts:', d
+    print('Elements counts:', d)
 
     for k, v in d.items():
         if v % 2 > 0:

@@ -27,13 +27,13 @@ def solution(A):
     A.sort()
     n = len(A)
 
-    for i in xrange(0, n):
-        if A[i] > 0 and A[i + 1] > 0:
-            if A[i] + 1 != A[i + 1]:
-                return A[i] + 1
-    
-    return A[i] + 1
-    # return 1
+    lowest = 1
+
+    for i in range(0, n):
+        if A[i] > 0 and A[i] == lowest:
+            lowest += 1
+
+    return lowest
 
 
 solution([1, 3, 6, 4, 1, 2])
