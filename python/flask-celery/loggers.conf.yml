@@ -1,0 +1,30 @@
+version: 1
+disable_existing_loggers: no
+
+formatters:
+  common:
+    style: '{'
+    datefmt: '%Y-%m-%d %H:%M:%S %z'
+    format: '{asctime} - {levelname} - [{module}]: {message}'
+
+handlers:
+  file_handler:
+    class: logging.FileHandler
+    level: DEBUG
+    formatter: common
+    filename: app.log
+  console_handler:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: common
+    stream: ext://sys.stdout
+
+loggers:
+  to_file:
+    level: DEBUG
+    handlers: [file_handler]
+    propagate: no
+  to_console:
+    level: DEBUG
+    handlers: [console_handler]
+    propagate: no

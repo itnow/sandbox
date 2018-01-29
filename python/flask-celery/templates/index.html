@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Celery Example</title>
+    <script src="{{ url_for('static', filename='jquery-3.3.1.min.js') }}"></script>
+</head>
+<body>
+    
+    <h2>Send Emails</h2>
+    {% for message in get_flashed_messages() %}
+        <p><b>Status: {{ message }}</b></p>
+    {% endfor %}
+    <form method="post">
+        Send to: <input type="text" name="email" value="{{ email }}">
+        <input type="submit" name="submit" value="Send now">
+        <input type="submit" name="submit" value="Send 10s later">
+    </form>
+
+    <h2>Run task with status updates</h2>
+    <p><button id="run-task">Add task</button></p>
+    <div id="task-reports"></div>
+    
+    <script>
+        function run_task() {
+            button = $('#run-task');
+            button.prop('disabled', true).text('Adding...');
+            div = $('<div class="progress">---</div>');
+            $.ajax({
+                type: 'POST',
+                url: '/add_task',
+                success: function(data, status, request) {
+                    status_url = request.getResponseHeader('Location');
+                    update_task_status(status_url, div[0]);
+                },
+                error: function() {
+                    alert('Unexpected error!');
+                }
+            }).done(function() {
+                $('#task-reports').append(div);
+                button.text('Add new task').prop('disabled', false);
+            });
+        }
+
+        function update_task_status(status_url, status_div) {
+            $.getJSON(status_url, function(data) {
+                percent = data['current'];
+                $(status_div).text(data['state']);
+                $(status_div).append(' ' + percent + '%');
+                $(status_div).append(' ' + data['status']);
+                if ('result' in data) {
+                    $(status_div).append(' Result: ' + data['result']);
+                }
+                if (data['state'] === 'PENDING' || data['state'] === 'PROGRESS') {
+                    // rerun in 2 seconds
+                    setTimeout(function() {
+                        update_task_status(status_url, status_div);
+                    }, 2000);
+                }
+            });
+        }
+
+        $(function() {
+            $('#run-task').click(run_task);
+        });
+    </script>
+
+</body>
+</html>
