@@ -1,0 +1,8 @@
+version: '3'
+services:
+  rabbitmq:
+    image: rabbitmq:3.7-alpine
+    hostname: my-rabbit-node
+    ports:
+      - "127.0.0.1:5672:5672"
+      - "127.0.0.1:25672:25672"
